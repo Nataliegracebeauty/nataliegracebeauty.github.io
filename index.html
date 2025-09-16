@@ -1,12 +1,128 @@
-
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Natalie Grace Beauty</title>
+  <style>
+    :root{
+      --bg:#fff;
+      --ink:#111;
+      --accent:#e6d5e9; /* soft pink-lilac */
+    }
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font:16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;}
+    .wrap{max-width:960px;margin:auto;padding:28px 16px;}
+    header{padding:8px 0 20px;border-bottom:1px solid #eee;}
+    h1{font-size:28px;margin:0 0 6px;}
+    .tag{display:inline-block;background:var(--accent);padding:6px 10px;border-radius:999px;font-size:12px;}
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fill, minmax(120px,1fr));
+      gap:12px;
+      margin:18px 0 8px;
+    }
+    .card{
+      border:1px solid #eee;border-radius:10px;overflow:hidden;background:#fff;
+      transition:transform .08s ease;
+    }
+    .card:hover{transform:translateY(-2px)}
+    .thumb{
+      width:100%;height:120px;object-fit:cover;display:block;
+      background:#f6f6f6;
+    }
+    .cap{padding:8px;font-size:12px;text-align:center;color:#444}
+    .bio{display:grid;grid-template-columns:1fr;gap:16px;margin-top:18px}
+    @media(min-width:720px){.bio{grid-template-columns:1.1fr .9fr}}
+    .cta-bar{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+    .btn{appearance:none;border:1px solid #111;background:#111;color:#fff;border-radius:8px;padding:10px 14px;font-weight:600;text-decoration:none}
+    .btn.secondary{background:#fff;color:#111}
+    footer{margin:28px 0 8px;color:#666;font-size:12px}
+    /* make images SMALL, as requested */
+    .grid .thumb{max-height:120px}
+  </style>
 </head>
 <body>
-  <h1>Welcome to Natalie Grace Beauty</h1>
-  <p>Site coming soon…</p>
+  <div class="wrap">
+    <header>
+      <h1>Natalie Grace Beauty</h1>
+      <span class="tag">cut • color • lived-in blondes • styling</span>
+    </header>
+
+    <section class="bio">
+      <div>
+        <h2 style="margin:14px 0 8px;font-size:20px;">About</h2>
+        <p>
+          I’m Natalie — a stylist focused on healthy, wearable hair: soft cuts,
+          glossy finishes, and dimensional color that grows out beautifully.
+          I keep things simple, detail-driven, and customized for your lifestyle.
+        </p>
+        <div class="cta-bar">
+          <a class="btn" href="mailto:natalie@example.com?subject=Appointment%20inquiry">Book by email</a>
+          <a class="btn secondary" href="#portfolio">See portfolio</a>
+        </div>
+      </div>
+      <div>
+        <h2 id="portfolio" style="margin:14px 0 8px;font-size:20px;">Portfolio (small thumbnails)</h2>
+
+        <!-- SMALL image grid; uses files already in your images/ folder -->
+        <div class="grid">
+          <figure class="card">
+            <img class="thumb" src="images/classic-lash-extensions.jpg" alt="Classic lash extensions">
+            <figcaption class="cap">Classic lash extensions</figcaption>
+          </figure>
+          <figure class="card">
+            <img class="thumb" src="images/dimensional-blonde.jpg" alt="Dimensional blonde">
+            <figcaption class="cap">Dimensional blonde</figcaption>
+          </figure>
+          <figure class="card">
+            <img class="thumb" src="images/glossy-finger-waves.jpg" alt="Glossy finger waves">
+            <figcaption class="cap">Glossy finger waves</figcaption>
+          </figure>
+          <figure class="card">
+            <img class="thumb" src="images/lived-in-waves-blonde.jpg" alt="Lived-in waves blonde">
+            <figcaption class="cap">Lived-in waves</figcaption>
+          </figure>
+          <figure class="card">
+            <img class="thumb" src="images/mens-cut.jpg" alt="Men's cut">
+            <figcaption class="cap">Men’s cut</figcaption>
+          </figure>
+          <figure class="card">
+            <img class="thumb" src="images/precise-sectioning.jpg" alt="Precise sectioning">
+            <figcaption class="cap">Precise sectioning</figcaption>
+          </figure>
+          <figure class="card">
+            <img class="thumb" src="images/soft-waves-brunette.jpg" alt="Soft waves brunette">
+            <figcaption class="cap">Soft waves (brunette)</figcaption>
+          </figure>
+          <figure class="card">
+            <img class="thumb" src="images/styling-finish.jpg" alt="Styling finish">
+            <figcaption class="cap">Styling finish</figcaption>
+          </figure>
+          <figure class="card">
+            <img class="thumb" src="images/tools-of-the-trade.jpg" alt="Tools of the trade">
+            <figcaption class="cap">Tools of the trade</figcaption>
+          </figure>
+        </div>
+
+        <p style="font-size:12px;color:#777;margin-top:6px">
+          Tap a photo to view larger (open image in new tab on mobile).
+        </p>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="y"></span> Natalie Grace Beauty · Nashville, TN
+    </footer>
+  </div>
+
+  <script>
+    // set year in footer
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // OPTIONAL: make small thumbs open large image on tap
+    document.querySelectorAll('.grid img').forEach(img=>{
+      img.addEventListener('click',()=> window.open(img.src, '_blank'));
+    });
+  </script>
 </body>
 </html>
